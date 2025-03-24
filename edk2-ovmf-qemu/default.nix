@@ -42,24 +42,19 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs =
     lib.optionals withAarch64 [
-      pkgsCross.aarch64-embedded.stdenv.cc
-      pkgsCross.aarch64-embedded.stdenv.cc.cc
+      pkgsCross.aarch64-embedded.buildPackages.gcc
     ]
     ++ lib.optionals withArm [
-      pkgsCross.arm-embedded.stdenv.cc
-      pkgsCross.arm-embedded.stdenv.cc.cc
+      pkgsCross.arm-embedded.buildPackages.gcc
     ]
     ++ lib.optionals withLoongarch64 [
-      pkgsCross.loongarch64-linux.stdenv.cc
-      pkgsCross.loongarch64-linux.stdenv.cc.cc
+      pkgsCross.loongarch64-linux.buildPackages.gcc
     ]
     ++ lib.optionals withRiscv64 [
-      pkgsCross.riscv64-embedded.stdenv.cc
-      pkgsCross.riscv64-embedded.stdenv.cc.cc
+      pkgsCross.riscv64-embedded.buildPackages.gcc
     ]
     ++ lib.optionals (withIa32 || withX64) [
-      pkgsCross.x86_64-embedded.stdenv.cc
-      pkgsCross.x86_64-embedded.stdenv.cc.cc
+      pkgsCross.x86_64-embedded.buildPackages.gcc
     ]
     ++ [
       acpica-tools
