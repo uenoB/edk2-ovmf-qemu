@@ -30,13 +30,13 @@ assert withAarch64 || withArm || withIa32 || withLoongarch64 || withRiscv64 || w
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "edk2-ovmf-qemu";
-  version = "stable202502";
+  version = "stable202505";
 
   src = fetchFromGitHub {
     owner = "tianocore";
     repo = "edk2";
     rev = "refs/tags/edk2-${finalAttrs.version}";
-    hash = "sha256-iobC0CeWSylS9sLuXOqAmL36hl/tY+IedT/I3xQ80Ag=";
+    hash = "sha256-VuiEqVpG/k7pfy0cOC6XmY+8NBtU/OHdDB9Y52tyNe8=";
     fetchSubmodules = true;
   };
 
