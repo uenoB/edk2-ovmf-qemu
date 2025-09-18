@@ -30,13 +30,13 @@ assert withAarch64 || withArm || withIa32 || withLoongarch64 || withRiscv64 || w
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "edk2-ovmf-qemu";
-  version = "stable202505";
+  version = "stable202508";
 
   src = fetchFromGitHub {
     owner = "tianocore";
     repo = "edk2";
     rev = "refs/tags/edk2-${finalAttrs.version}";
-    hash = "sha256-VuiEqVpG/k7pfy0cOC6XmY+8NBtU/OHdDB9Y52tyNe8=";
+    hash = "sha256-YZcjPGPkUQ9CeJS9JxdHBmpdHsAj7T0ifSZWZKyNPMk=";
     fetchSubmodules = true;
   };
 
@@ -65,6 +65,7 @@ stdenv.mkDerivation (finalAttrs: {
   hardeningDisable = [
     "format"
     "relro"
+    "bindnow"
   ];
   dontPatchELF = true;
 
