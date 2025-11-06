@@ -4,7 +4,7 @@
     { self, nixpkgs }:
     let
       inherit (nixpkgs) lib;
-      support = _: pkgs: with pkgs.hostPlatform; isLinux || isDarwin;
+      support = _: pkgs: with pkgs.stdenv.hostPlatform; isLinux || isDarwin;
       systems = lib.attrNames (lib.filterAttrs support nixpkgs.legacyPackages);
       pkgs = system: import ./. { pkgs = nixpkgs.legacyPackages.${system}; };
       packages = lib.genAttrs systems pkgs;
@@ -13,7 +13,7 @@
     {
       packages = lib.mapAttrs (_: addDefault "edk2-ovmf-qemu") packages;
       overlays = {
-        packages = final: prev: pkgs final.system;
+        packages = final: prev: pkgs final.stdenv.hostPlatform.system;
       };
     };
 }
